@@ -6,6 +6,8 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Support\Facades\Gate;
 use Laravel\Passport\Passport;
 use Mockery\Generator\StringManipulation\Pass\Pass;
+use Illuminate\Support\Facades\Auth;
+use App\Extensions\RiakUserProvider;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -34,5 +36,11 @@ class AuthServiceProvider extends ServiceProvider
         Passport::personalAccessClientSecret(
             config('passport.personal_access_client.secret')
         );
+
+        
+        Auth::provider('custom_user', function ($app, array $config) {
+            $model = $app['config']['auth.providers.users.model'];
+            return new MyEloquentUserProvider($app['hash'], $model);
+        });
     }
 }
