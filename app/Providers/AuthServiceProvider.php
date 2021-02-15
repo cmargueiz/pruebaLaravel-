@@ -38,9 +38,5 @@ class AuthServiceProvider extends ServiceProvider
         );
 
         
-        Auth::provider('custom_user', function ($app, array $config) {
-            $model = $app['config']['auth.providers.users.model'];
-            return new MyEloquentUserProvider($app['hash'], $model);
-        });
     }
 }

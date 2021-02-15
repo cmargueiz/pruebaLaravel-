@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login','LoginApiController@login');
+
+//Route::group(['middleware' => 'auth:api'], function () { 
+    Route::apiResource('contactoscorporativos','twContactosCorporativosController');
+    Route::apiResource('contratoscorporativos','twContratosCorporativosController');
+    Route::apiResource('corporativos','twCorporativosController');
+    Route::apiResource('documentos','twDocumentosController');
+    Route::apiResource('documentoscorporativos','twDocumentosCorporativosController');
+    Route::apiResource('empresascorporativos','twEmpresasCorporativosController');
+    Route::apiResource('usuarios','twUsuariosController');
+    Route::post('logout','LoginApiController@logout');
+//});

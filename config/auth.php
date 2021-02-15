@@ -90,8 +90,8 @@ return [
 
     'passwords' => [
         'users' => [
-            'provider' => 'users',
-            'model' => App\tw_usuario::class,
+            'providers' => 'users',
+            'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
