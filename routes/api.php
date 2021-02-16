@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('login','LoginApiController@login');
 
-//Route::group(['middleware' => 'auth:api'], function () { 
+Route::group(['middleware' => 'auth:api'], function () { 
     Route::apiResource('contactoscorporativos','twContactosCorporativosController');
     Route::apiResource('contratoscorporativos','twContratosCorporativosController');
     Route::apiResource('corporativos','twCorporativosController');
@@ -29,4 +29,5 @@ Route::post('login','LoginApiController@login');
     Route::apiResource('empresascorporativos','twEmpresasCorporativosController');
     Route::apiResource('usuarios','twUsuariosController');
     Route::post('logout','LoginApiController@logout');
-//});
+    Route::get('consultacorporativo/{id}','ConsultasController@getCorporativo');
+});
